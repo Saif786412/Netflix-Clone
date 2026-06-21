@@ -1,0 +1,82 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return signedIn() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
+    }
+
+    function validRankValue(value) {
+      return value is int && value >= 1 && value <= 100;
+    }
+
+    function validOptionalMovieRankField(field) {
+      return !request.resource.data.keys().hasAny([field])
+        || validRankValue(request.resource.data[field]);
+    }
+
+    function validMovieRankFields() {
+      return validOptionalMovieRankField("rank")
+        && validOptionalMovieRankField("beforeRank")
+        && validOptionalMovieRankField("afterRank");
+    }
+
+    function movieRankFieldChanged(field) {
+      return request.resource.data.diff(resource.data).affectedKeys().hasAny([field]);
+    }
+
+    function validChangedMovieRankField(field) {
+      return !movieRankFieldChanged(field)
+        || validOptionalMovieRankField(field);
+    }
+
+    function validChangedMovieRankFields() {
+      return validChangedMovieRankField("rank")
+        && validChangedMovieRankField("beforeRank")
+        && validChangedMovieRankField("afterRank");
+    }
+
+    function validUserCreate(userId) {
+      return isOwner(userId)
+        && request.resource.data.keys().hasOnly(["email", "role", "createdAt"])
+        && request.resource.data.role == "user"
+        && request.resource.data.email == request.auth.token.email;
+    }
+
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if validUserCreate(userId);
+      allow update, delete: if isAdmin();
+    }
+
+    match /movies/{movieId} {
+      allow read: if true;
+      allow create: if isAdmin() && validMovieRankFields();
+      allow update: if isAdmin() && validChangedMovieRankFields();
+      allow delete: if isAdmin();
+    }
+
+    match /adminData/{document=**} {
+      allow read, write: if isAdmin();
+    }
+    
+    match /users/{userId}/watchlist/{movieId} {
+  allow read, create, update, delete: if isOwner(userId) || isAdmin();
+}
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

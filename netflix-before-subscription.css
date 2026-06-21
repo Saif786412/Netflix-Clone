@@ -1,0 +1,1665 @@
+@import url('https://fonts.googleapis.com/css2?family=Martel+Sans:wght@600&family=Poppins:wght@300;400;700&display=swap');
+
+:root {
+    --view-transition-duration: 720ms;
+    --view-fade-duration: 590ms;
+    --view-transition-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/9ba9f0e2-b246-47f4-bd1f-3e84c23a5db8/web/IN-en-20251020-TRIFECTA-perspective_d6da84e9-6145-4b1e-bb51-e402c966a045_small.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 95vh;
+    width: auto;
+    position: relative;
+   
+}
+.main .box {
+    height: 100vh;
+    width: 100%;
+    opacity: 0.7;
+    position: absolute;
+    top: 0;
+    background-color: black;
+}
+
+nav {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8000) 0.000%, rgba(0, 0, 0, 0.7889) 8.333%, rgba(0, 0, 0, 0.7556) 16.67%, rgba(0, 0, 0, 0.7000) 25.00%, rgba(0, 0, 0, 0.6222) 33.33%, rgba(0, 0, 0, 0.5222) 41.67%, rgba(0, 0, 0, 0.4000) 50.00%, rgba(0, 0, 0, 0.2778) 58.33%, rgba(0, 0, 0, 0.1778) 66.67%, rgba(0, 0, 0, 0.1000) 75.00%, rgba(0, 0, 0, 0.04444) 83.33%, rgba(0, 0, 0, 0.01111) 91.67%, rgba(0, 0, 0, 0.000) 100.0%);
+    max-width: 80vw;
+    justify-content: space-between;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    height: 100px;
+    z-index: 2;
+    width: 100%;
+}
+
+nav img {
+    color: #e50914; /* (229, 9, 20) */
+    fill: currentColor;
+    width: 9.23rem;
+    height: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+nav button {
+    position: relative;
+    z-index: 10;
+}
+
+.nav-actions {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+}
+
+.hero {
+    height: calc(100% - 100px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    position: relative;
+    top: -76px;
+    gap: 23px;
+    padding: 0 30px;
+    font-weight: bolder;
+}
+
+.hero> :nth-child(1) {
+    font-family: "Archivo Black";
+    font-weight: bolder;
+    font-size: 55px;
+    text-align: center;
+}
+
+.hero> :nth-child(2) {
+    font-weight: bold;
+    font-size: 19px;
+    text-align: center;
+}
+
+.hero> :nth-child(3) {
+    font-weight: 400;
+    font-size: 15px;
+    text-align: center;
+}
+
+.language-selector-wrapper-1 {
+  position: relative; 
+  left: 0%;
+  display: inline-block; 
+}
+
+
+.signin {
+    background-color: rgb(229, 9, 20);
+    color: white;
+    position: relative;
+    top: 0px;
+    font-weight: 700;
+    margin: 8px;
+    padding: 7px 16px;
+    font-size: 14px;
+    font-family: "Netflix Sans", "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+    border-radius: 6px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.68, 0.06), box-shadow 250ms cubic-bezier(0.4, 0, 0.68, 0.06), transform 250ms cubic-bezier(0.4, 0, 0.68, 0.06), color 250ms cubic-bezier(0.4, 0, 0.68, 0.06), opacity 250ms cubic-bezier(0.4, 0, 0.68, 0.06);
+    border: none;
+    outline: none;
+}
+
+
+.signin:hover {
+    background-color: rgb(200, 0, 18);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.45);
+}
+
+.hero-buttons {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+    
+}
+
+.getstarted {
+    background-color: rgb(229, 9, 20);
+    color: white;
+    font-weight: 700;
+    margin: 8px;
+    padding: 12px 30px;
+    font-size: 1.5rem;
+    font-family: "Netflix Sans", "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+    border-radius: calc(0.2500rem);
+    border-width: 0.0625rem;
+    border-style: solid;
+    border: none;
+    outline: none;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.68, 0.06), box-shadow 250ms cubic-bezier(0.4, 0, 0.68, 0.06), transform 250ms cubic-bezier(0.4, 0, 0.68, 0.06), color 250ms cubic-bezier(0.4, 0, 0.68, 0.06), opacity 250ms cubic-bezier(0.4, 0, 0.68, 0.06);
+}
+
+.getstarted:hover {
+    background-color: rgb(200, 0, 18); /* visible change to trigger transition */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.45);   
+}
+
+
+.main input {
+    width: 23%;
+    padding: 16px 115px 14px 14px;
+    color: white;
+    font-size: 15px;
+    border-radius: 4px;
+    background-color: rgba(21, 19, 19, 0.927);
+    border: 1px solid rgba(246, 238, 238, 0.5);
+}
+
+.main input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.main-container {
+  position: absolute; 
+  width: 100%; 
+  height: 67px; 
+  overflow: hidden; 
+  bottom: 0%;
+  
+}
+
+.curve-with-rainbow {
+  position: absolute;
+  top: 0; 
+  left: -25%; 
+  margin-top: -.0rem;
+  width: 150%;
+  height: 208px; 
+  border-top-left-radius: 50% 100%;
+  border-top-right-radius: 50% 100%;
+  display: flex;
+  z-index: 1;
+  overflow: hidden; 
+}
+
+
+.curve-with-rainbow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; 
+  height: 100%; 
+  background-image: linear-gradient(
+    to right,
+    rgb(33, 13, 22) 16%,
+    rgb(184, 40, 105),
+    rgb(229, 9, 20),
+    rgb(184, 40, 105),
+    rgb(33, 13, 22) 84%
+  );
+  z-index: -1; 
+}
+
+
+.my-container {
+  position: absolute;
+  width: 100%; 
+  height: 70px; 
+  overflow: hidden;
+  bottom: -1%;
+}
+
+.bluish-curve {
+  position: absolute;
+  top: -1px;
+  left: -25%; 
+  right: -25%;
+  width: 150%; 
+  height: 200px; 
+  background: radial-gradient(
+    45% 490% at 50% -425%,
+    rgba(64, 97, 231, 0.4) 80%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+   background-color: black;
+   z-index: 1; 
+   display: flex; 
+   border-top-left-radius: 50% 100%;
+   border-top-right-radius: 50% 100%;
+}
+
+.TrendingNow {
+    position: relative;
+    left: 8%;
+    z-index: 9999;
+    display: inline-block;
+    color: #fff;
+    font-size: clamp(0px, 2vw, 25px);
+    font-family:  "Netflix Sans", "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif ;
+    font-weight: 700 ;
+    margin: 1rem 2.5rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background-color: black;
+}
+
+
+
+.horizontal-scroll-container {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  position: relative; /* Keep this if you want to use 'top' and 'left' directly */
+
+  /* --- ADD YOUR POSITIONING CHANGES HERE --- */
+  top: -15%; /* Moves the entire container up by 17% of its parent's height */
+  left: 10%; /* Moves the entire container right by 12% of its parent's width */
+  /* Or, if you prefer using margins: */
+  /* margin-top: -17%; */
+  margin-left: -1%;
+  /* If you use margins, 'position: relative;' is not strictly needed for these specific adjustments,
+     but it's often good practice for containing other absolutely positioned elements. */
+
+  /* Other existing styles for .horizontal-scroll-container */
+  /* Example: margin: 20px auto; */
+}
+
+/* ... rest of your CSS for .cards, .card-item, .scroll-button-wrapper, etc. ... */
+/* --- B. Your .cards container - THE SCROLLABLE AREA --- */
+.cards {
+  /* Reset any conflicting inherited styles from previous attempts */
+  position: static;     /* Ensure it's in normal flow, not absolutely/relatively positioned on its own */
+  top: auto;            /* Reset any previous 'top' value */
+  left: auto;           /* Reset any previous 'left' value */
+
+  display: flex;        /* Makes .cards a flex container for the individual card items */
+  flex-direction: row;  /* Arranges card items horizontally */
+  flex-wrap: nowrap;    /* Ensures all card items stay on a single line */
+  overflow-x: scroll;   /* Enables horizontal scrolling when content overflows */
+  overflow-y: hidden;   /* Hides vertical scrollbar, if any */
+  gap: 18px;            /* This will create the desired gap BETWEEN your `.card-item` elements */
+  flex-grow: 1;         /* Allows .cards to take up available space within .horizontal-scroll-container */
+  box-sizing: border-box; /* Ensures padding is included in the width calculation */
+  padding: 0 8px;       /* Adds padding to the left/right edges of the scrollable area */
+
+  /* --- HIDE NATIVE SCROLLBAR --- */
+    -ms-overflow-style: none;      /* For Internet Explorer and Edge */
+    scroll-behavior: smooth;       /* Smooth scrolling for supported browsers */
+}
+
+/* For Firefox 64+ — apply only when supported */
+@supports (scrollbar-width: none) {
+    .cards {
+        scrollbar-width: none;
+    }
+}
+
+/* For Webkit browsers (Chrome, Safari, Opera), hide the scrollbar track */
+.cards::-webkit-scrollbar {
+  display: none;                 /* Hides the scrollbar entirely */
+  width: 0;                      /* Ensures no width is reserved for vertical scrollbar */
+  height: 0;                     /* Ensures no height is reserved for horizontal scrollbar */
+}
+
+/* --- C. Styling for each individual "card" item (the grouped number + movie) --- */
+/* This assumes you've wrapped each number/movie pair in a <div class="card-item"> as suggested */
+.card-item {
+  flex-shrink: 0;       /* IMPORTANT: Prevents card items from shrinking to fit the container */
+  /* Define the width of your individual cards here. This is crucial for horizontal scrolling to work predictably. */
+  width: 200px;         /* Example: Adjust this to your desired card width */
+  /* height: auto; */      /* Let content dictate height, or set a fixed height if needed */
+  /* Add any general styling for the card container itself (e.g., border, background, shadow) */
+  /* Example: border: 1px solid #eee; border-radius: 8px; background-color: #f9f9f9; padding: 10px; */
+
+  /* Assuming you want .numbers and .movies stacked vertically inside each card-item */
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* Centers content horizontally within the card */
+  /* You can add more specific styling for .numbers or .movies here if desired */
+  /* But for this request, I'm keeping them as minimal as possible as you requested no changes to movie/image */
+}
+
+/* --- D. Styling for the button wrappers (.scroll-button-wrapper) --- */
+/* These buttons are now flex items within .horizontal-scroll-container, positioned to the sides of .cards */
+.scroll-button-wrapper {
+  display: flex;
+  align-items: center;      /* Vertically centers the button inside its wrapper */
+  justify-content: center;  /* Horizontally centers the button inside its wrapper */
+  z-index: 10;              /* Ensures buttons are above other content if overlapping */
+  padding: 0 10px;          /* Adds space between the button and the cards container */
+  background-color: transparent; /* Or a color with some opacity if you want them to stand out */
+}
+
+
+/* --- E. Styling for the actual button elements (.scroll-arrow-button) --- */
+.scroll-arrow-button:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Opaque white on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* More pronounced shadow on hover */
+}
+
+/* Your existing .scroll-arrow-button styles */
+.scroll-arrow-button {
+  position: relative;
+  top: 32px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 0.5rem;
+  width: 1.5rem; /* The button's visual width */
+  height: 7.5rem; /* The button's visual height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition:  background-color 0.3s, box-shadow 0.3s, opacity 0.4s ease-out, transform 0.4s ease-out, visibility 0.4s ease-out;
+
+  /* Ensure initial state is visible and not transformed */
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.scroll-button-wrapper.scroll-button-left .scroll-arrow-button:disabled {
+  opacity: 0;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: translateX(-100%); /* Hides to the left */
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* Styles for when the RIGHT button is disabled */
+.scroll-button-wrapper.scroll-button-right .scroll-arrow-button:disabled {
+  opacity: 0;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: translateX(100%); /* Hides to the right */
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* ONLY change these styles for the SVG itself */
+.scroll-arrow-button svg {
+  /* Set the desired size for the arrow icon.
+     Since the button is 1.5rem wide, the SVG will scale down to fit or be clipped.
+     To make the *arrow itself* appear larger, you can use transform: scale(). */
+  width: 80%; /* Make the SVG take up 100% of the parent button's width */
+  height: auto; /* Maintain aspect ratio */
+  fill: rgba(255, 255, 255, 0.7);
+  /* To make the arrow visually larger *within* the 1.5rem button width,
+     you can scale the SVG. Adjust the scale factor as needed.
+     A scale of 2.0 would make it twice its original size relative to its container. */
+  transform: scale(2.0); /* Example: make the arrow twice as large */
+  transform-origin: center; /* Ensures it scales from its center */
+  /* You might need to adjust the button's overflow property if the arrow is clipped */
+  overflow: visible;
+ 
+}
+
+.scroll-arrow-button svg path {
+  stroke-width: 0.8px; /* Adjust this value (e.g., 1px, 2px, 3px) to change thickness */
+  stroke: black;
+ 
+  
+}
+
+.movies img {
+    width: 11.25rem;
+    height: 15.75rem;
+    margin: 10px;
+    border-radius: 0.5rem;
+    border: none;
+    outline: none;
+    transition: transform 0.2s ease-in-out; 
+}
+
+.movies img:hover{
+    transform: scale(1.05);
+    transform-origin: center;
+}
+
+.numbers {
+    position: relative;
+    display: inline-block;
+    line-height: 1;
+    height: 1em;
+    font: menu;
+    font-weight: 1000;
+    font-size: 6.25rem;
+    color: black;
+    -webkit-text-stroke: 0.10rem rgb(255, 255, 255);
+    text-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.5);
+    bottom: -229px;
+    right: 88px;
+    z-index: 1000;
+}
+
+.reasons {
+    position: relative;
+    top: -10%;
+    left: 8%;
+    z-index: 9999;
+    display: inline-block;
+    color: #fff;
+    font-size: clamp(0px, 2vw, 25px);
+    font-family:  "Netflix Sans", "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif ;
+    font-weight: 700 ;
+    margin: 1rem 2.5rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background-color: black;
+    line-height: 1.1;
+}
+
+
+.reasons-4-container {
+  position: relative;
+  top: -13%;
+  left: 8%;
+  z-index: 9999;
+  height: 270px;
+  width: 80%;
+  margin: 1rem 2.5rem;
+  padding: 6px 12px;
+  border-radius: 1rem;
+  line-height: 1.1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+    /* allow horizontal scrolling and hide scrollbars across browsers */
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* IE 10+ */
+    -ms-overflow-style: none;
+     /* -webkit-overflow-scrolling is deprecated/unsupported in many browsers.
+         Use touch-action / overscroll-behavior / scroll-behavior for cross-browser touch/scroll handling. */
+     scroll-behavior: smooth;
+     touch-action: pan-x;
+     overscroll-behavior-x: contain;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera (fallback for browsers that don't support scrollbar-width) */
+.reasons-4-container::-webkit-scrollbar {
+        display: none; /* Safari and modern Chromium */
+        width: 0;
+        height: 0;
+}
+
+/* Firefox: hide scrollbar using the Firefox-only property */
+@supports (scrollbar-width: none) {
+    .reasons-4-container {
+        scrollbar-width: none;
+    }
+}
+
+.reasons-4 {
+   height: 270px;
+   width: 24%;
+   min-width: 25%;
+   border-radius: 1rem;
+   -webkit-backdrop-filter: blur(32px);
+   backdrop-filter: blur(32px);
+   background-image: linear-gradient(149deg, #192247 0%, #210e17 96.86%);
+   flex-shrink: 0;
+}
+
+h3 {
+  position: relative;
+  right: 10%;
+  color: white;
+  font-size: 1.5rem;
+  font-family: "Netflix Sans", "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 20px;
+}
+
+h3.h3-2 {
+  position: relative;
+  right: -7%;
+  color: white;
+  font-size: 1.5rem;
+  font-family: "Netflix Sans", "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+  font-weight: 700;
+  text-align: left;
+  margin-top: 20px;
+}
+
+h3.h3-4 {
+  position: relative;
+  right: -0%;
+  color: white;
+  font-size: 1.5rem;
+  font-family: "Netflix Sans", "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 20px;
+}
+
+p {
+  position: relative;
+  right: -1%;
+  bottom: -8%;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+  font-family: "Netflix Sans", "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+  font-weight: 400;
+  padding-inline: 7%;
+  margin-top: 10px;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.tv-logo-container {
+    display: block;
+    position: absolute; /* Consider if 'absolute' is truly needed, as it takes the element out of the normal document flow. */
+    bottom: 3%;
+    right: 2%;
+    width: 72px;
+    height: 76px; /* The height is slightly larger than the SVG to accommodate the bottom part of the logo. */
+    margin: 12px 0px 0px;
+    padding: 0px;
+    background-color: rgba(0, 0, 0, 0); /* Transparent */
+    border: 0px none rgb(255, 255, 255); /* No border */
+    border-radius: 0px; /* No border-radius */
+    box-sizing: border-box;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    justify-self: auto;
+    grid-area: auto;
+}
+
+.tv-logo-container svg {
+    display: inline;
+    width: 72px;
+    height: 72px;
+    fill: none; /* The fill is handled by the gradients defined within the SVG paths. */
+}
+
+.download-icon-container {
+    display: block;
+    position: absolute; /* Consider if 'absolute' is truly needed, as it takes the element out of the normal document flow. */
+    bottom: 3%;
+    right: 2%;
+    width: 72px;
+    height: 76px; /* The height is slightly larger than the SVG to accommodate the bottom part. */
+    margin: 12px 0px 0px;
+    padding: 0px;
+    background-color: rgba(0, 0, 0, 0); /* Transparent */
+    border: 0px none rgb(255, 255, 255); /* No border */
+    border-radius: 0px; /* No border-radius */
+    box-sizing: border-box;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    justify-self: auto;
+    grid-area: auto;
+}
+
+.download-icon-container svg {
+    display: inline;
+    width: 72px;
+    height: 72px;
+    fill: none; /* The fill is handled by the gradients defined within the SVG paths. */
+}
+
+.telescope-icon-container {
+    display: block;
+    position: absolute; /* Consider if 'absolute' is truly needed, as it takes the element out of the normal document flow. */
+    bottom: 3%;
+    right: 2%;
+    width: 72px;
+    height: 76px; /* The height is slightly larger than the SVG to accommodate the bottom part. */
+    margin: 12px 0px 0px;
+    padding: 0px;
+    background-color: rgba(0, 0, 0, 0); /* Transparent */
+    border: 0px none rgb(255, 255, 255); /* No border */
+    border-radius: 0px; /* No border-radius */
+    box-sizing: border-box;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    justify-self: auto;
+    grid-area: auto;
+}
+
+.telescope-icon-container svg {
+    display: inline;
+    width: 72px;
+    height: 72px;
+    fill: none; /* The fill is handled by the gradients defined within the SVG paths. */
+}
+
+.profiles-icon-container {
+    display: block;
+    position: absolute;
+    bottom: 3%;
+    right: 2%; 
+    width: 72px;
+    height: 76px; 
+    margin: 12px 0px 0px;
+    padding: 0px;
+    background-color: rgba(0, 0, 0, 0); 
+    border: 0px none rgb(255, 255, 255); 
+    border-radius: 0px; 
+    box-sizing: border-box;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    justify-self: auto;
+    grid-area: auto;
+}
+
+.profiles-icon-container svg {
+    display: inline;
+    width: 72px;
+    height: 72px;
+    fill: none; /* The fill is handled by the gradients defined within the SVG paths. */
+}
+
+.Questions {
+    position: relative;
+    top: -10%;
+    left: 8%;
+    z-index: 9999;
+    display: inline-block;
+    color: #fff;
+    font-size: clamp(0px, 2vw, 25px);
+    font-family:  "Netflix Sans", "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif ;
+    font-weight: 700 ;
+    margin: 1rem 2.5rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background-color: black;
+    line-height: 1.1;
+}
+
+.accordion-container {
+    position: relative;
+    top: -13%;
+    left: 8%;
+    z-index: 9999;
+    width: 80%;
+    margin: 1rem 2.5rem;
+    padding: 6px 12px;
+    border-radius: 1rem;
+    background-color: black;
+}
+
+.accordion-item {
+   margin-bottom: 10px;
+}
+
+
+.accordion-button:hover {
+    background-color: #444;
+}
+
+.accordion-content {
+    background-color: #333;
+    color: white;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding: 0 18px;
+    max-height: 0;
+}
+
+.accordion-content p {
+    padding: 15px 0;
+    margin: 0;
+    font-size: 20px;   
+}
+
+
+.accordion-button.active + .accordion-content {
+    max-height: 200px;
+}
+
+
+.accordion-button {
+  background-color: #222;
+  transition: background-color 0.3s ease;
+  color: white;
+  cursor: pointer;
+  padding: 20px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+}
+
+
+.accordion-button .icon-plus {
+  width: 24px;
+  height: 24px; 
+  transition: transform 0.3s ease; /* Smooth transition for rotation */
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+/* Rotate the plus icon 45 degrees to become a cross/minus when active */
+.accordion-item.active .accordion-button .icon-plus {
+  transform: rotate(45deg);
+}
+
+.last-hero-text {
+  position: relative;
+  top: -9%;
+  font-weight: 400;
+  font-size: 15px;
+  text-align: center;
+  color: white;
+}
+
+.last-hero-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+}
+
+.last-getstarted {
+    background-color: rgb(229, 9, 20);
+    color: white;
+    font-weight: 700;
+    margin: 8px;
+    padding: 10px 30px;
+    font-size: 21px;
+    font-family: "Netflix Sans", "Helvetica Neue", "Segoe UI", Roboto, Ubuntu, sans-serif;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.68, 0.06), box-shadow 250ms cubic-bezier(0.4, 0, 0.68, 0.06), transform 250ms cubic-bezier(0.4, 0, 0.68, 0.06), color 250ms cubic-bezier(0.4, 0, 0.68, 0.06), opacity 250ms cubic-bezier(0.4, 0, 0.68, 0.06);
+}
+
+.last-getstarted:hover {
+    background-color: rgb(200, 0, 18); /* visible change to trigger transition */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.45);
+    
+}
+
+.main input.second-email {
+    width: 30%;
+    color: white;
+    font-size: 15px;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    background-color: rgba(22, 22, 22, 0.7);
+    border-width: 0.0625rem;
+    border: 1px solid rgba(128, 128, 128, 0.7);
+}
+
+.second-email::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.calls {
+    position: relative;
+    top: -5%;
+    left: 3%;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    font-weight: 400 ;
+    margin: 1rem 5.5rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    line-height: 1.1;
+}
+
+.telephone{
+    text-decoration: underline;
+    
+}
+.supports-container {
+    position: relative;
+    top: -5%;
+    left: 6%;
+    width: 80%;
+    margin: 1% 2.5rem;
+    padding: 6px 12px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    box-sizing: border-box;
+    gap: 1px;
+   
+    
+}
+
+.supports {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    font-weight: 400;
+    padding: 6px 12px;
+    text-decoration: underline;  
+}
+
+.language-selector-wrapper {
+  position: relative; 
+  left: 10%;
+  display: inline-block; 
+}
+
+.language-selector-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; 
+  padding: 8px 12px;
+  background-color: rgba(22, 22, 22, 0.7); 
+  color: white; /* Text color */
+  border: 1px solid rgba(128, 128, 128, 0.7); 
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  -webkit-appearance: none; /* Remove default button styles */
+  -moz-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+}
+
+
+.language-icon,
+.dropdown-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0; /* Prevent icons from shrinking */
+}
+
+.selected-language {
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.language-options-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: #444;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  min-width: 100%;
+  z-index: 10;
+
+  /* --- Changes for "downside" and smoothness --- */
+  position: absolute; /* Keep absolute positioning */
+  top: 100%; /* Position the top edge of the list at the bottom edge of the button */
+  left: 0; /* Align with the left edge of the button */
+  opacity: 0; /* Start invisible */
+  visibility: hidden; /* Hide from screen readers and pointer events */
+  transform: translateY(-10px); /* Start slightly above for a slide-down effect */
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out, visibility 0.2s; /* Smooth transition for all */
+}
+
+/* Class to show the dropdown */
+.language-options-list.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0); /* Slide into place */
+  transition-delay: 0s; /* Ensure transition applies immediately */
+}
+
+.language-options-list li {
+  padding: 8px 12px;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+}
+
+.language-options-list li:hover {
+  background-color: #666;
+  color: white;
+}
+
+.US{
+   position: relative;
+    left: 3%;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    font-weight: 400 ;
+    margin: 1rem 5.5rem;
+    padding: 6px 12px;
+    line-height: 4.1;
+}
+
+/* Initially hide the disclosure content */
+[data-uia="recaptcha-disclosure"] {
+  max-height: 0; 
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out; /* Smooth transition */
+  opacity: 0; /* Start hidden */
+}
+
+/* When active, show the disclosure content */
+[data-uia="recaptcha-disclosure"].is-active {
+  max-height: 200px; /* Or a height sufficient to show all content */
+  opacity: 1;
+}
+
+.my-simplified-class {
+    position: relative;
+    top: -3%;
+}
+
+.reCAPTCHA {
+    position: relative;
+    left: 3%;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8125rem;
+    font-weight: 400 ;
+    padding: 6px 12px;
+    line-height: 1.5;
+    margin: 1rem 5.5rem;
+    margin-bottom: -10px;
+}
+
+.learnmore {
+    border: none;
+    color: lightblue;
+    background-color: black;
+    text-decoration: underline;
+    font-size: 0.8000rem;
+    font-weight: 600;
+}
+
+.reCAPTCHA-2{
+    position: relative;
+    left: -3.2%;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.700rem;
+    font-weight: 400 ;
+    margin: 1rem 5.5rem;
+    line-height: 1.5;
+  }
+
+@media screen and (max-width: 768px) {
+
+  .hero-buttons {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .main input {
+        width: 105%;
+        padding: 12px 10px;
+        font-size: 14px;
+    }
+    
+    .getstarted {
+        font-size: 1rem;
+        padding: 5px 5px;
+        width: 50vw;
+        height: 5vh;
+    }
+
+    .reasons-4-container {
+        left: -1%;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        height: 125vh;
+    }
+
+    .reasons-4 {
+      width: 130vw;
+      height: 30vh;
+    }
+
+    .main{
+      width: 155vw;
+    }
+
+    nav img {
+      height: 2rem;
+      width: 7rem;
+      right: 40%;
+    }
+
+    nav{
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.8000) 0.000%, rgba(0, 0, 0, 0.7889) 8.333%, rgba(0, 0, 0, 0.7556) 16.67%, rgba(0, 0, 0, 0.7000) 25.00%, rgba(0, 0, 0, 0.6222) 33.33%, rgba(0, 0, 0, 0.5222) 41.67%, rgba(0, 0, 0, 0.4000) 50.00%, rgba(0, 0, 0, 0.2778) 58.33%, rgba(0, 0, 0, 0.1778) 66.67%, rgba(0, 0, 0, 0.1000) 75.00%, rgba(0, 0, 0, 0.04444) 83.33%, rgba(0, 0, 0, 0.01111) 91.67%, rgba(0, 0, 0, 0.000) 100.0%);
+      width: 100vw;
+      z-index: 1000;
+      max-width: 94vw;
+      width: 94vw;
+      justify-content: space-between;
+    }
+
+    .nav-actions {
+        gap: 6px;
+        transform: scale(0.82);
+        transform-origin: right center;
+    }
+
+    .language-selector-wrapper-1 {
+        left: auto;
+    }
+
+    .signin {
+    margin: 0;
+    padding: 7px 12px;
+    font-size: 15px;
+    top: auto;
+    right: auto;
+    height: 36px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    white-space: nowrap;
+    line-height: 1;
+    border-radius: 6px;
+}
+
+    .language-selector-button {
+        padding: 7px 9px;
+        font-size: 12px;
+    }
+
+    .TrendingNow {
+      font-size: clamp(0px, 6vw, 25px);
+    }
+
+    .reasons {
+      font-size: clamp(0px, 6vw, 25px);
+    }
+
+    .Questions {
+      font-size: clamp(0px, 6vw, 25px);
+    }
+
+    .accordion-container {
+      width: 125vw;
+      left: 1%;
+    }
+
+    .hero> :nth-child(1) {
+      font-size: clamp(0px, 10vw, 50px);
+    }
+
+    .last-hero-buttons {
+      flex-direction: column;
+    }
+
+    .main input.second-email {
+      width: 80%;
+      margin-top: 1rem;
+    } 
+
+    h3 {
+      font-size: 2rem;
+    }
+
+    h3.h3-2 {
+      font-size: 2rem;
+    }
+
+    h3.h3-4 {
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1.4rem;
+    }
+
+     .auth-modal {
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        padding-bottom: 40px;
+    }
+    
+    .auth-box {
+        width: 100%;
+        max-width: 80%; 
+        margin: 0 auto; /* Forces perfect horizontal centering */
+        padding: 30px 20px; /* Reduces side padding to fit inputs */
+    }
+    
+    .modal-header {
+        padding: 16px 5%; 
+    }
+    
+    .modal-logo {
+        height: 45px; 
+        left: 10%;
+    }
+    
+    .auth-title {
+        font-size: 50px;
+    }
+
+    .auth-subtitle {
+        font-size: 20px;   
+    }
+
+    .auth-btn {
+        font-size: 23px;
+        min-height: 59px;
+    }
+
+    .recaptcha-terms {
+        font-size: 17px;
+        font-weight: 500;
+    }
+
+}
+
+
+/* =========================================
+   Cloud Security: Pixel-Perfect Authentic UI
+   ========================================= */
+
+.hidden {
+    display: none !important;
+}
+
+/* 1. Full-screen opaque background with red ambient glow */
+
+.auth-modal {
+    position: fixed;
+    z-index: 100000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; /* Anchors to all 4 corners, fixing the mobile height bug */
+    background-color: #000;
+    background-image: url(https://occ-0-879-3492.1.nflxso.net/dnm/api/v6/iMyKkw5SVrkCXbCfSBEb_Pjar5Y/AAAAQBTxE26zgLJoqZnmxUCfZtVJ2HbJUsVonZ_9Uo-pn68zarPK.png);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 120px; 
+    box-sizing: border-box;
+    overflow-y: auto; /* Keeps the background black if you need to scroll on a tiny phone */
+    overflow-x: hidden;
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    transform-origin: center top;
+    transition:
+        opacity var(--view-fade-duration) ease,
+        transform var(--view-transition-duration) var(--view-transition-ease);
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+}
+
+.auth-modal.is-entering {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) scale(0.992);
+}
+
+.auth-modal.is-closing {
+    opacity: 0;
+    transform: translate3d(0, -16px, 0) scale(1.008);
+    pointer-events: none;
+}
+
+/* 2. Header with Logo */
+.modal-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px 3%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-logo {
+    height: 40px;
+    position: relative;
+    left: 120px;
+    color: #e50914;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #8c8c8c;
+    font-size: 40px;
+    font-weight: 800;
+    cursor: pointer;
+    line-height: 1;
+    font-weight: 300;
+}
+
+.close-btn:hover {
+    color: white;
+}
+
+/* 3. Invisible form container (No box shadow, blends into background) */
+.auth-box {
+    width: 100%;
+    max-width: 440px;
+    padding: 20px;
+    box-sizing: border-box;
+    color: white;
+    background: transparent;
+    box-shadow: none;
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    transform-origin: center top;
+    transition:
+        opacity var(--view-fade-duration) ease,
+        transform var(--view-transition-duration) var(--view-transition-ease);
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+}
+
+.auth-modal.is-entering .auth-box {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0) scale(0.985);
+}
+
+.auth-modal.is-closing .auth-box {
+    opacity: 0;
+    transform: translate3d(0, -16px, 0) scale(1.008);
+}
+
+/* 4. Exact Typography */
+.auth-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+.auth-subtitle {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.7);
+    position: relative;
+    right: 7%;
+    margin-bottom: 24px;
+    font-weight: 400;
+    /* Animation properties to prevent layout snapping */
+    max-height: 50px;
+    opacity: 1;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease, margin-bottom 0.3s ease;
+}
+
+/* Override the global .hidden class ONLY for the subtitle so it animates instead of vanishing */
+.auth-subtitle.hidden {
+    display: block !important; 
+    max-height: 14px; /* Collapsed height to hide the text */
+    opacity: 0;
+    margin-bottom: 0;
+}
+
+/* 5. Inputs & Floating Labels (High Specificity) */
+#auth-modal .nf-input-wrapper {
+    position: relative;
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+#auth-modal .nf-input {
+    width: 110%;
+    background-color: rgba(22, 22, 22, 0.7);
+    border: 1px solid rgba(128, 128, 128, 0.7);
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    padding: 24px 16px 8px 16px; 
+    box-sizing: border-box;
+    transition: border 0.2s ease;
+}
+
+#auth-modal .nf-input:focus {
+    outline: none;
+    border: 2px solid white;
+    padding: 23px 15px 7px 15px; /* Offset border width so it doesn't jump */
+}
+
+#auth-modal .nf-label {
+    position: absolute;
+    left: 16px;
+    top: 16px; /* Fixed resting position perfectly in the visual center */
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    pointer-events: none;
+    transition: font-size 250ms ease, top 250ms ease;
+    transform: none; /* Overrides any previous transform bugs */
+}
+
+/* The Floating Label Animation */
+#auth-modal .nf-input:focus ~ .nf-label,
+#auth-modal .nf-input:not(:placeholder-shown) ~ .nf-label {
+    top: 6px; /* Pushed down from the ceiling for perfect spacing */
+    font-size: 12px;
+    font-weight: 500;
+    transform: translateY(0);
+}
+
+/* 6. Button & Links */
+.auth-btn {
+    width: 110%;
+    background-color: rgb(229, 9, 20);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    min-height: 48px;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.auth-btn:hover {
+    background-color: rgb(193, 17, 25);
+}
+
+.auth-help-container {
+    margin-top: 24px;
+}
+
+.get-help-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.get-help-link:hover {
+    text-decoration: underline;
+}
+
+.recaptcha-terms {
+    margin-top: 40px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.4;
+}
+
+.auth-error {
+    width: 110%;
+    box-sizing: border-box;
+    margin: -4px 0 12px 0;
+    padding: 10px 12px;
+    border-left: 4px solid #e50914;
+    background-color: rgba(229, 9, 20, 0.12);
+    color: #ffb3b3;
+    font-size: 14px;
+    line-height: 1.4;
+    border-radius: 4px;
+}
+
+/* =========================================
+   Before Subscription: Trending Card Flight Modal
+   ========================================= */
+
+body.before-title-modal-open {
+    overflow: hidden;
+}
+
+.before-title-source-hidden {
+    visibility: hidden !important;
+}
+
+.before-title-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 85000;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.64);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    pointer-events: auto;
+}
+
+.before-title-overlay.is-visible {
+    opacity: 1;
+}
+
+.before-title-modal-shell {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 85002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    padding: clamp(18px, 4vw, 48px);
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.before-title-modal-shell.is-revealed {
+    pointer-events: auto;
+}
+
+.before-title-modal-panel {
+    position: relative;
+    width: min(82vw, 620px);
+    max-height: min(84vh, 680px);
+    overflow: hidden auto;
+    border-radius: 8px;
+    background: #181818;
+    color: #fff;
+    box-shadow: 0 12px 38px rgba(0, 0, 0, 0.62);
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(1);
+    transform-origin: center center;
+    backface-visibility: hidden;
+    /* Fallback: hide property for browsers that don't support CSS Scrollbars Module */
+}
+
+/* Apply CSS Scrollbars properties only when supported to avoid compat warnings */
+@supports (scrollbar-color: rgba(255, 255, 255, 0.28) transparent) {
+    .before-title-modal-panel {
+        scrollbar-color: rgba(255, 255, 255, 0.28) transparent;
+        scrollbar-width: thin;
+    }
+}
+
+.before-title-modal-panel::-webkit-scrollbar {
+    width: 8px;
+}
+
+.before-title-modal-panel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.before-title-modal-panel::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.28);
+}
+
+.before-title-modal-shell.is-revealed .before-title-modal-panel {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    box-shadow: 0 24px 86px rgba(0, 0, 0, 0.78);
+}
+
+.before-title-modal-media {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+    background: #080808;
+}
+
+.before-title-modal-media::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    z-index: 2;
+    height: 45%;
+    background: linear-gradient(
+        180deg,
+        rgba(24, 24, 24, 0) 0%,
+        rgba(24, 24, 24, 0.72) 62%,
+        #181818 100%
+    );
+    pointer-events: none;
+}
+
+.before-title-modal-media img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 28%;
+    opacity: 1;
+    transition: none;
+}
+
+.before-title-modal-content {
+    position: relative;
+    z-index: 3;
+    padding: 5px clamp(18px, 4vw, 37px) clamp(20px, 0vw, 14px);
+    transform: translateY(-12px);
+    opacity: 1;
+}
+
+.before-title-modal-content h2 {
+    max-width: 92%;
+    margin: 0 0 12px;
+    overflow: visible;
+    overflow-wrap: anywhere;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: 0;
+}
+
+.before-title-modal-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    color: rgba(255, 255, 255, 0.74);
+    font-size: 0.96rem;
+    font-weight: 600;
+}
+
+.before-title-modal-meta span:not(:last-child)::after {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    margin-left: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.44);
+    vertical-align: middle;
+}
+
+.before-title-modal-description {
+    max-width: 540px;
+    margin: 0 0 24px;
+    color: rgba(255, 255, 255, 0.84);
+    font-size: 0.98rem;
+    left: -7%;
+    line-height: 1.5;
+}
+
+.before-title-get-started {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 12px 24px;
+    border: 0;
+    border-radius: 4px;
+    background: rgb(229, 9, 20);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.before-title-get-started:hover {
+    background: rgb(193, 17, 25);
+    transform: translateY(-1px);
+}
+
+@media screen and (max-width: 768px) {
+    .before-title-overlay {
+        height: 100dvh;
+    }
+
+    .before-title-modal-shell {
+        align-items: center;
+        justify-content: flex-start;
+        height: 100dvh;
+        padding: 14px;
+    }
+
+    .before-title-modal-panel {
+        width: calc(100vw - 28px);
+        max-width: 520px;
+        max-height: 84vh;
+        margin: 0 auto;
+    }
+
+    .before-title-modal-media {
+        aspect-ratio: 4 / 5;
+    }
+
+    .before-title-modal-content {
+        padding: 30px 18px 26px;
+        transform: translateY(-10px);
+    }
+
+    .before-title-modal-content h2 {
+        max-width: calc(100% - 24px);
+        font-size: clamp(1.65rem, 9vw, 2.7rem);
+    }
+
+    .before-title-modal-description {
+        font-size: 0.95rem;
+    }
+
+    .before-title-get-started {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .auth-modal,
+    .auth-box {
+        transition-duration: 1ms;
+    }
+}

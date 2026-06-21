@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="
+default-src 'self';
+script-src 'self' https://www.gstatic.com https://www.googleapis.com;
+style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+font-src 'self' https://fonts.gstatic.com;
+img-src 'self' data: https:;
+connect-src 'self' https://*.googleapis.com https://*.firebaseio.com https://*.firestore.googleapis.com https://identitytoolkit.googleapis.com;
+media-src 'self' https: blob:;
+frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://player.vimeo.com https://drive.google.com https://assets.pinterest.com https://www.pinterest.com https://www.instagram.com https://www.tiktok.com;
+object-src 'none';
+base-uri 'self';
+form-action 'self';
+upgrade-insecure-requests;
+">
+  <title>Netflix</title>
+  <link rel="stylesheet" href="netflix-after-subscription.css">
+  <link rel="stylesheet" href="admin-panel.css?v=rbac-spacing-final">
+</head>
+
+<body class="after-page">
+  <div id="auth-gate" class="auth-gate" aria-hidden="true">
+    <div class="auth-splash-logo" role="img" aria-label="Netflix">
+      <div class="auth-splash-n">
+        <span class="auth-splash-n-crop">
+          <img src="badges/netflix-original.png.webp" alt="">
+        </span>
+      </div>
+      <div class="auth-splash-wordmark">
+        <span class="auth-splash-wordmark-layer auth-splash-wordmark-letter auth-splash-wordmark-e">
+          <img src="https://raw.githubusercontent.com/CodeWithHarry/Sigma-Web-Dev-Course/36b5b5745645de080da183dc7e634601810bea79/Video%2053/assets/images/logo.svg" alt="">
+        </span>
+        <span class="auth-splash-wordmark-layer auth-splash-wordmark-letter auth-splash-wordmark-t">
+          <img src="https://raw.githubusercontent.com/CodeWithHarry/Sigma-Web-Dev-Course/36b5b5745645de080da183dc7e634601810bea79/Video%2053/assets/images/logo.svg" alt="">
+        </span>
+        <span class="auth-splash-wordmark-layer auth-splash-wordmark-letter auth-splash-wordmark-f">
+          <img src="https://raw.githubusercontent.com/CodeWithHarry/Sigma-Web-Dev-Course/36b5b5745645de080da183dc7e634601810bea79/Video%2053/assets/images/logo.svg" alt="">
+        </span>
+        <span class="auth-splash-wordmark-layer auth-splash-wordmark-letter auth-splash-wordmark-l">
+          <img src="https://raw.githubusercontent.com/CodeWithHarry/Sigma-Web-Dev-Course/36b5b5745645de080da183dc7e634601810bea79/Video%2053/assets/images/logo.svg" alt="">
+        </span>
+        <span class="auth-splash-wordmark-layer auth-splash-wordmark-letter auth-splash-wordmark-i">
+          <img src="https://raw.githubusercontent.com/CodeWithHarry/Sigma-Web-Dev-Course/36b5b5745645de080da183dc7e634601810bea79/Video%2053/assets/images/logo.svg" alt="">
+        </span>
+        <span class="auth-splash-wordmark-layer auth-splash-wordmark-letter auth-splash-wordmark-x">
+          <img src="https://raw.githubusercontent.com/CodeWithHarry/Sigma-Web-Dev-Course/36b5b5745645de080da183dc7e634601810bea79/Video%2053/assets/images/logo.svg" alt="">
+        </span>
+        <span class="auth-splash-wordmark-layer auth-splash-wordmark-small-n">
+          <img src="https://raw.githubusercontent.com/CodeWithHarry/Sigma-Web-Dev-Course/36b5b5745645de080da183dc7e634601810bea79/Video%2053/assets/images/logo.svg" alt="">
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <header class="member-nav" id="member-nav">
+    <a class="brand-logo" href="netflix-after-subscription.html" aria-label="Netflix home">
+  <img src="https://raw.githubusercontent.com/CodeWithHarry/Sigma-Web-Dev-Course/36b5b5745645de080da183dc7e634601810bea79/Video%2053/assets/images/logo.svg" alt="Netflix">
+</a>
+
+    <nav class="primary-navigation" aria-label="Primary">
+      <a href="#home" class="nav-link is-active" data-view="home">Home</a>
+      <a href="#shows" class="nav-link" data-view="shows">Shows</a>
+      <a href="#movies" class="nav-link" data-view="movies">Movies</a>
+      <a href="#games" class="nav-link" data-view="games">Games</a>
+      <a href="#new-popular" class="nav-link" data-view="new-popular">New &amp; Popular</a>
+      <a href="#my-list-page" class="nav-link" data-view="my-list">My List</a>
+      <a href="#languages" class="nav-link" data-view="languages">Browse by Languages</a>
+    </nav>
+
+    <div class="secondary-navigation">
+      <form class="search-form" id="search-form" role="search">
+        <button class="icon-button search-toggle" id="search-toggle" type="button" aria-label="Search titles">
+          <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false">
+            <path fill="currentColor" fill-rule="evenodd" d="M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0m-1.38 7.03a9 9 0 1 1 1.41-1.41l5.68 5.67-1.42 1.42z" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+        <label class="visually-hidden" for="title-search">Search titles</label>
+        <input id="title-search" class="search-input" type="search" placeholder="Titles, genres" autocomplete="off">
+      </form>
+
+      <div class="notification-shell">
+        <button class="icon-button" id="notification-button" type="button" aria-label="Notifications" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="25" height="25" aria-hidden="true" focusable="false">
+            <path fill="currentColor" fill-rule="evenodd" d="M13 4.07A7 7 0 0 1 19 11v4.25q1.58.12 3.1.28l-.2 2a93 93 0 0 0-19.8 0l-.2-2q1.52-.15 3.1-.28V11a7 7 0 0 1 6-6.93V2h2zm4 11.06V11a5 5 0 0 0-10 0v4.13a97 97 0 0 1 10 0m-8.37 4.24C8.66 20.52 10.15 22 12 22s3.34-1.48 3.37-2.63c.01-.22-.2-.37-.42-.37h-5.9c-.23 0-.43.15-.42.37" clip-rule="evenodd"></path>
+          </svg>
+          <span class="notification-pill">11</span>
+        </button>
+        <div class="notification-menu" id="notification-menu" hidden>
+          <p>New admin-approved titles are ready to stream.</p>
+        </div>
+      </div>
+
+      <button id="admin-dashboard-btn" class="admin-dashboard-btn" type="button">Admin</button>
+
+      <div class="profile-shell">
+        <button class="profile-button" id="profile-button" type="button" aria-haspopup="true" aria-expanded="false">
+          <span class="profile-avatar" id="profile-avatar">N</span>
+          <span class="profile-caret" aria-hidden="true"></span>
+        </button>
+        <div class="profile-menu" id="profile-menu" hidden>
+          <div class="profile-menu-header">
+            <span class="profile-avatar profile-avatar-small" id="profile-avatar-small">N</span>
+            <div>
+              <p id="profile-email">Signed in</p>
+              <span id="profile-role">Standard user</span>
+            </div>
+          </div>
+          <button id="profile-admin-link" class="profile-menu-item admin-only" type="button">Admin Dashboard</button>
+          <button id="sign-out-btn" class="profile-menu-item sign-out-item" type="button">Sign Out</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="home" class="view-stage">
+    <div id="browse-view" class="browse-view page-view is-active" aria-hidden="false">
+      <section class="hero-billboard" id="hero-billboard" aria-label="Featured title">
+      <div class="hero-media" aria-hidden="true">
+        <img id="hero-poster" class="hero-poster" alt="">
+        <video id="hero-trailer" class="hero-trailer hero-native-trailer" muted preload="auto"></video>
+        <div id="hero-embed-shell" class="hero-embed-shell" hidden>
+          <iframe
+            id="hero-embed-trailer"
+            class="hero-embed-trailer"
+            title="Trailer preview"
+            allow="autoplay; encrypted-media"
+            referrerpolicy="strict-origin-when-cross-origin"
+            aria-hidden="true"
+            tabindex="-1"
+            hidden>
+          </iframe>
+        </div>
+        <div id="hero-media-shield" class="hero-media-shield" aria-hidden="true"></div>
+      </div>
+      <div class="hero-copy">
+        <div class="hero-kicker is-empty" id="hero-kicker"></div>
+        <h1 id="hero-title">Shadow Protocol</h1>
+        <p class="hero-meta" id="hero-meta">Limited Series | 2026 | U/A 16+</p>
+        <p class="hero-description" id="hero-description">A cyber-forensics team follows a breach that turns into a city-wide conspiracy.</p>
+        <div class="hero-actions">
+          <button id="hero-play-btn" class="hero-button play-button" type="button">
+            <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M6 4.75v14.5c0 .83.91 1.34 1.62.91l11.58-7.25a1.07 1.07 0 0 0 0-1.82L7.62 3.84A1.07 1.07 0 0 0 6 4.75z"></path>
+            </svg>
+            <span>Play</span>
+          </button>
+          <button id="hero-info-btn" class="hero-button info-button" type="button">
+            <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false">
+              <path fill="currentColor" fill-rule="evenodd" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20m0 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16m1 6v7h-2v-7zm0-3v2h-2V7z" clip-rule="evenodd"></path>
+            </svg>
+            <span>More Info</span>
+          </button>
+        </div>
+      </div>
+      <div class="hero-rating-tag" id="hero-rating-tag">U/A 16+</div>
+      </section>
+
+      <section class="content-rows" id="rows-root" aria-label="Streaming rows"></section>
+    </div>
+
+    <section class="my-list-page page-view view-hidden" id="my-list-page" aria-label="My List" aria-hidden="true">
+      <h1>My List</h1>
+      <div class="my-list-grid" id="my-list-grid"></div>
+    </section>
+  </main>
+
+  <footer class="member-footer" id="member-footer" role="contentinfo">
+    <div class="social-links" aria-label="Social links">
+      <a class="social-link" href="https://www.facebook.com/NetflixIN/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" fill-rule="evenodd" d="M13.99 13.16v8.82h-3.95v-8.82h-3.2V9.51h3.2V6.73c0-3.16 1.9-4.91 4.78-4.91q1.42.02 2.82.25v3.1h-1.6A1.82 1.82 0 0 0 14 7.15V9.5h3.5l-.56 3.65z" clip-rule="evenodd"></path>
+        </svg>
+      </a>
+      <a class="social-link" href="https://www.instagram.com/Netflix_IN/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" fill-rule="evenodd" d="M21.93 16.12a5.96 5.96 0 0 1-1.62 4.19 5.9 5.9 0 0 1-4.19 1.62c-1.65.09-6.6.09-8.25 0a5.96 5.96 0 0 1-4.19-1.62 5.92 5.92 0 0 1-1.61-4.19c-.09-1.65-.09-6.6 0-8.25a5.94 5.94 0 0 1 1.61-4.19 5.95 5.95 0 0 1 4.19-1.61c1.65-.09 6.6-.09 8.25 0a5.96 5.96 0 0 1 4.19 1.62 5.92 5.92 0 0 1 1.62 4.19c.09 1.65.09 6.59 0 8.24M20.2 12c0-1.46.12-4.58-.4-5.89a3.37 3.37 0 0 0-1.9-1.9c-1.31-.52-4.44-.4-5.89-.4s-4.58-.12-5.89.4a3.38 3.38 0 0 0-1.9 1.9c-.52 1.31-.4 4.44-.4 5.89s-.12 4.58.4 5.89a3.38 3.38 0 0 0 1.9 1.9c1.31.52 4.44.4 5.89.4s4.58.12 5.89-.4a3.38 3.38 0 0 0 1.9-1.9c.52-1.31.4-4.44.4-5.89m-3.07 0A5.13 5.13 0 1 1 12 6.87 5.12 5.12 0 0 1 17.13 12m-1.79 0a3.33 3.33 0 1 0-6.67 0 3.33 3.33 0 0 0 6.67 0m2-4.14a1.2 1.2 0 1 1 1.2-1.2 1.19 1.19 0 0 1-1.2 1.2" clip-rule="evenodd"></path>
+        </svg>
+      </a>
+      <a class="social-link" href="https://twitter.com/netflixindia" target="_blank" rel="noopener noreferrer" aria-label="X">
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M17.53 3h3.21l-7.01 8.02L22 21h-6.47l-5.06-6.62L4.67 21H1.46l7.5-8.58L1.04 3h6.64l4.58 6.06zm-1.12 16.24h1.78L6.71 4.67H4.8z"></path>
+        </svg>
+      </a>
+      <a class="social-link" href="https://www.youtube.com/channel/UCZSNzBgFub_WWil6TOTYwAg" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+          <path fill="currentColor" fill-rule="evenodd" d="M22.54 6.67c-.25-.95-1-1.7-1.94-1.96-1.72-.46-8.6-.46-8.6-.46s-6.88 0-8.6.46c-.95.26-1.69 1-1.94 1.96A29 29 0 0 0 1 12q-.02 2.69.46 5.33c.25.95 1 1.7 1.94 1.96 1.72.46 8.6.46 8.6.46s6.89 0 8.6-.46c.95-.26 1.69-1 1.94-1.96q.48-2.64.46-5.33.02-2.69-.46-5.33m-12.79 8.6V8.73L15.5 12z" clip-rule="evenodd"></path>
+        </svg>
+      </a>
+    </div>
+    <ul class="member-footer-links">
+      <li><a href="#">Audio Description</a></li>
+      <li><a href="#">Help Centre</a></li>
+      <li><a href="#">Gift Cards</a></li>
+      <li><a href="#">Media Centre</a></li>
+      <li><a href="#">Investor Relations</a></li>
+      <li><a href="#">Jobs</a></li>
+      <li><a href="#">Terms of Use</a></li>
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Legal Notices</a></li>
+      <li><a href="#">Cookie Preferences</a></li>
+      <li><a href="#">Corporate Information</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+    <p class="member-footer-copyright">&copy; 1997-2026 Netflix, Inc.</p>
+  </footer>
+
+  <div id="title-modal" class="title-modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="title-modal-panel">
+      <button id="close-title-modal" class="modal-close-btn" type="button" aria-label="Close details">&times;</button>
+      <div class="modal-media">
+        <img id="modal-image" src="" alt="">
+      </div>
+      <div class="modal-copy">
+        <h2 id="modal-title">Title details</h2>
+        <p id="modal-meta">Movie | 2026 | U/A 16+</p>
+        <p id="modal-description">Details loading.</p>
+        <div class="modal-actions">
+          <button id="modal-play-btn" class="hero-button play-button" type="button">Play</button>
+          <button id="modal-list-btn" class="hero-button info-button" type="button">My List</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="trailer-modal" class="trailer-modal hidden" role="dialog" aria-modal="true" aria-labelledby="trailer-modal-title">
+    <div id="trailer-modal-panel" class="trailer-modal-panel">
+      <button id="close-trailer-modal" class="modal-close-btn trailer-close-btn" type="button" aria-label="Close trailer">&times;</button>
+      <div class="trailer-player-shell">
+        <video id="trailer-modal-video" class="trailer-modal-video" muted preload="auto" hidden></video>
+        <iframe
+          id="trailer-modal-frame"
+          class="trailer-modal-frame"
+          title="Trailer player"
+          allow="autoplay; encrypted-media; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          tabindex="-1"
+          hidden>
+        </iframe>
+        <div id="trailer-modal-fallback" class="trailer-modal-fallback" hidden>
+          <h2>Trailer preview is unavailable</h2>
+          <p id="trailer-modal-fallback-text">This source cannot be embedded safely inside Netflix.</p>
+        </div>
+      </div>
+      <div class="trailer-modal-copy">
+        <span>Trailer</span>
+        <h2 id="trailer-modal-title">Trailer</h2>
+      </div>
+    </div>
+  </div>
+
+  <div id="admin-dashboard" class="admin-dashboard hidden">
+    <div class="admin-panel">
+      <button id="close-admin-dashboard" class="admin-close-btn">&times;</button>
+
+      <h1>Admin Dashboard</h1>
+      <p class="admin-subtitle">Role-Based Access Control Panel</p>
+
+      <div class="admin-grid">
+        <div class="admin-card">
+          <h2>Total Movies</h2>
+          <p id="total-movies-count">Loading...</p>
+        </div>
+
+        <div class="admin-card">
+          <h2>Cloud Database</h2>
+          <p>Firestore Active</p>
+        </div>
+
+        <div class="admin-card">
+          <h2>Current Role</h2>
+          <p id="current-role-status">Admin</p>
+        </div>
+
+        <div class="admin-card">
+          <h2>Security Logs</h2>
+          <p id="security-log-count">Loading...</p>
+        </div>
+      </div>
+
+      <div class="admin-movie-manager">
+        <h2>Movie Content Management</h2>
+        <p class="admin-subtitle">Add secure cloud-managed movie records using Firestore.</p>
+
+        <form id="movie-form" class="movie-form">
+          <input type="text" id="movie-title" placeholder="Movie Title" required>
+          <input type="text" id="movie-category" placeholder="Category" required>
+          <input type="hidden" id="movie-placement" required>
+          <div class="placement-dropdown is-empty" data-placement-dropdown>
+            <div class="placement-dropdown-toggle" role="button" tabindex="0" aria-haspopup="listbox" aria-expanded="false">
+              <span class="placement-dropdown-label">Movie Rows / Placement</span>
+              <svg class="placement-dropdown-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M11.6 6.5c.15 0 .22.18.12.28l-3.48 3.48a.33.33 0 0 1-.48 0L4.28 6.78a.17.17 0 0 1 .12-.28z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <ul class="placement-options-list" role="listbox" aria-label="Movie Rows / Placement" aria-multiselectable="true">
+              <li role="option" tabindex="0" aria-selected="false" data-placement-value="before-trending-now"><span class="placement-option-checkbox" aria-hidden="true"></span><span class="placement-option-text">Before Subscription: Trending Now</span></li>
+              <li role="option" tabindex="0" aria-selected="false" data-placement-value="after-todays-pick"><span class="placement-option-checkbox" aria-hidden="true"></span><span class="placement-option-text">After Subscription: Today's Top Picks for You</span></li>
+              <li role="option" tabindex="0" aria-selected="false" data-placement-value="after-new-on-netflix"><span class="placement-option-checkbox" aria-hidden="true"></span><span class="placement-option-text">After Subscription: New on Netflix</span></li>
+              <li role="option" tabindex="0" aria-selected="false" data-placement-value="after-us-tv-dramas"><span class="placement-option-checkbox" aria-hidden="true"></span><span class="placement-option-text">After Subscription: US TV Dramas</span></li>
+              <li role="option" tabindex="0" aria-selected="false" data-placement-value="after-continue-watching"><span class="placement-option-checkbox" aria-hidden="true"></span><span class="placement-option-text">After Subscription: Continue Watching</span></li>
+              <li role="option" tabindex="0" aria-selected="false" data-placement-value="after-crowd-pleasers"><span class="placement-option-checkbox" aria-hidden="true"></span><span class="placement-option-text">After Subscription: Crowd Pleasers</span></li>
+              <li role="option" tabindex="0" aria-selected="false" data-placement-value="after-top-10"><span class="placement-option-checkbox" aria-hidden="true"></span><span class="placement-option-text">After Subscription: Top 10 Shows in India Today</span></li>
+              <li role="option" tabindex="0" aria-selected="false" data-placement-value="after-memory"><span class="placement-option-checkbox" aria-hidden="true"></span><span class="placement-option-text">After Subscription: Erase My Memory So I Can Watch Again</span></li>
+              <li role="option" tabindex="0" aria-selected="false" data-placement-value="after-kdrama"><span class="placement-option-checkbox" aria-hidden="true"></span><span class="placement-option-text">After Subscription: K-Dramas for Beginners</span></li>
+              <li role="option" tabindex="0" aria-selected="false" data-placement-value="after-only-on-netflix"><span class="placement-option-checkbox" aria-hidden="true"></span><span class="placement-option-text">After Subscription: Only on Netflix</span></li>
+              <li role="option" tabindex="0" aria-selected="false" data-placement-value="after-my-list"><span class="placement-option-checkbox" aria-hidden="true"></span><span class="placement-option-text">After Subscription: My List</span></li>
+            </ul>
+          </div>
+          <input type="hidden" id="movie-badges">
+          <div class="placement-dropdown is-empty" data-badges-dropdown>
+            <div class="placement-dropdown-toggle" role="button" tabindex="0" aria-haspopup="listbox" aria-expanded="false">
+              <span class="placement-dropdown-label">Movie Badges</span>
+              <svg class="placement-dropdown-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M11.6 6.5c.15 0 .22.18.12.28l-3.48 3.48a.33.33 0 0 1-.48 0L4.28 6.78a.17.17 0 0 1 .12-.28z" clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <ul class="placement-options-list" role="listbox" aria-label="Movie Badges" aria-multiselectable="true">
+              <li role="option" data-badge-value="none">None</li>
+              <li role="option" data-badge-value="new">New</li>
+              <li role="option" data-badge-value="cloud">Cloud</li>
+              <li role="option" data-badge-value="top10">Top 10</li>
+              <li role="option" data-badge-value="recently-added">Recently Added</li>
+              <li role="option" data-badge-value="hero-logo">Logo in Hero Banner</li>
+            </ul>
+          </div>
+          <input type="text" id="movie-year" placeholder="Release Year" required>
+          <input type="text" id="movie-rating" placeholder="Rating / Age Restriction" required>
+          <div class="poster-smart-field" data-rank-smart-field>
+            <input type="hidden" id="movie-rank-target">
+            <input type="number" id="movie-rank" placeholder="Display Rank / Position" min="1" required aria-haspopup="listbox">
+            <button type="button" class="poster-smart-trigger" aria-label="Choose display rank target" aria-expanded="false">
+              <svg class="placement-dropdown-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M11.6 6.5c.15 0 .22.18.12.28l-3.48 3.48a.33.33 0 0 1-.48 0L4.28 6.78a.17.17 0 0 1 .12-.28z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+            <ul class="placement-options-list poster-smart-options-list" role="listbox" aria-label="Display Rank For">
+              <li role="option" tabindex="0" aria-selected="false" data-rank-target-value="before">Before Subscription Page</li>
+              <li role="option" tabindex="0" aria-selected="false" data-rank-target-value="after">After Subscription Page</li>
+              <li role="option" tabindex="0" aria-selected="false" data-rank-target-value="both">Both Pages</li>
+            </ul>
+          </div>
+          <div class="poster-smart-field" data-poster-smart-field>
+            <input type="hidden" id="movie-poster-target">
+            <input type="text" id="movie-poster" inputmode="url" autocomplete="off" placeholder="Poster Image URL" aria-haspopup="listbox" required>
+            <button type="button" class="poster-smart-trigger" aria-label="Choose poster image target" aria-expanded="false">
+              <svg class="placement-dropdown-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M11.6 6.5c.15 0 .22.18.12.28l-3.48 3.48a.33.33 0 0 1-.48 0L4.28 6.78a.17.17 0 0 1 .12-.28z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+            <ul class="placement-options-list poster-smart-options-list" role="listbox" aria-label="Poster Image For">
+              <li role="option" tabindex="0" aria-selected="false" data-poster-target-value="before">Before Subscription Page</li>
+              <li role="option" tabindex="0" aria-selected="false" data-poster-target-value="after">After Subscription Page</li>
+              <li role="option" tabindex="0" aria-selected="false" data-poster-target-value="both">Both Pages</li>
+            </ul>
+          </div>
+          <input type="text" id="movie-banner" inputmode="url" autocomplete="off" placeholder="Banner Image">
+          <input type="text" id="movie-trailer" inputmode="url" autocomplete="off" placeholder="Trailer / Video">
+          <textarea id="movie-description" placeholder="Movie Description" required></textarea>
+
+          <button type="submit">Add Movie</button>
+          <button type="button" id="cancel-edit-movie" class="cancel-edit-movie">Cancel Edit</button>
+        </form>
+
+        <div class="admin-movie-tools">
+          <input type="text" id="admin-movie-search" placeholder="Search Movies by Title, Category, Year, or Rating">
+          <button type="button" id="clear-movie-search">Clear</button>
+        </div>
+
+        <div id="movie-list" class="movie-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast-region" aria-live="polite" aria-atomic="false"></div>
+
+  <script type="module" src="netflix-after-subscription.js?v=ranked-hover-normal-stack-1"></script>
+</body>
+
+</html>
